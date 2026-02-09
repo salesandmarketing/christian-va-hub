@@ -11,8 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
-    "deploy": "gh-pages -d dist"
+    "test:watch": "vitest",
+    "deploy": "gh-pages -d dist",
   
   },
   "dependencies": {
