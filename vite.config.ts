@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig(({ mode }) => ({
   // Ensure this matches your repository name exactly
-  base: "/christian-s-va-hub/", 
+  base: "/", 
   plugins: [react()],
   resolve: {
     alias: {
