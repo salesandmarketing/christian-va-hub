@@ -3,13 +3,9 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig(({ mode }) => ({
-  base: "/christian-s-va-hub/",
-  server: {
-    host: "::",
-    port: 8080,
-    hmr: { overlay: false },
-  },
- plugins: [react()],
+  // Ensure this matches your repository name exactly
+  base: "/christian-s-va-hub/", 
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -17,5 +13,7 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist",
+    // This helps debug if files are missing
+    sourcemap: true, 
   },
 }));
