@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
+    "deploy": "gh-pages -d dist"
     "homepage": "https://salesandmarketing.github.io/christian-s-va-hub",
   },
   "dependencies": {
