@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,8 +19,9 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
@@ -31,8 +33,20 @@ const ContactSection = () => {
       return;
     }
     setErrors({});
-    setForm({ name: "", email: "", message: "" });
-    toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
+    setSending(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: result.data,
+      });
+      if (error) throw error;
+      setForm({ name: "", email: "", message: "" });
+      toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
+    } catch (err) {
+      console.error("Send error:", err);
+      toast({ title: "Failed to send", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -79,8 +93,8 @@ const ContactSection = () => {
                   />
                   {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
                 </div>
-                <Button type="submit" className="w-full">
-                  <Send className="mr-2 h-4 w-4" /> Send Message
+                <Button type="submit" className="w-full" disabled={sending}>
+                  <Send className="mr-2 h-4 w-4" /> {sending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
