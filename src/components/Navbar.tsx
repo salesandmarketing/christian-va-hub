@@ -3,7 +3,7 @@ import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://www.linkedin.com/in/christian-espinosa", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/christian-espinosa-200124227/", label: "LinkedIn" },
   { icon: Facebook, href: "https://www.facebook.com/christian.espinosa", label: "Facebook" },
 ];
 
