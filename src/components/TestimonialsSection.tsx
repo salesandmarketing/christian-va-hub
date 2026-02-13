@@ -21,9 +21,6 @@ const TestimonialsSection = () => (
       >
         <span className="text-accent font-semibold text-sm uppercase tracking-widest">Feedback</span>
         <h2 className="text-3xl md:text-5xl font-bold font-heading mt-3">Testimonials</h2>
-        <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-          What clients have to say (placeholder — ready for real feedback).
-        </p>
       </motion.div>
       <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {testimonials.map((t, i) => (
