@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Linkedin, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const socialLinks = [
+  { icon: Linkedin, href: "https://www.linkedin.com/in/christian-espinosa", label: "LinkedIn" },
+  { icon: Facebook, href: "https://www.facebook.com/christian.espinosa", label: "Facebook" },
+];
 
 const links = [
   { label: "Home", href: "#home" },
@@ -40,7 +45,12 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <Button asChild size="sm" className="ml-2 bg-gradient-primary hover:opacity-90 shadow-glow">
+          {socialLinks.map((s) => (
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all">
+              <s.icon className="h-4 w-4" />
+            </a>
+          ))}
+          <Button asChild size="sm" className="ml-1 bg-gradient-primary hover:opacity-90 shadow-glow">
             <a href="#contact">Hire Me</a>
           </Button>
         </div>
@@ -64,6 +74,13 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <div className="flex items-center gap-2 mt-3">
+            {socialLinks.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="h-9 w-9 rounded-lg bg-gradient-subtle flex items-center justify-center text-muted-foreground hover:text-primary transition-all">
+                <s.icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
           <Button asChild size="sm" className="mt-2 w-full bg-gradient-primary">
             <a href="#contact" onClick={() => setOpen(false)}>Hire Me</a>
           </Button>
