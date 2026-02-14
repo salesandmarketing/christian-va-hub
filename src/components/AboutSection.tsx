@@ -31,10 +31,15 @@ const AboutSection = () => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="aspect-square bg-gradient-primary rounded-3xl flex items-center justify-center relative overflow-hidden group"
+            className="aspect-video bg-card rounded-3xl overflow-hidden shadow-card"
           >
-            <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors" />
-            <span className="text-8xl relative z-10">👨‍💼</span>
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/_DTtaFkmSkM"
+              title="Introduction Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </motion.div>
 
           <motion.div
