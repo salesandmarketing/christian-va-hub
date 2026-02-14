@@ -35,7 +35,7 @@ const AboutSection = () => (
           >
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/_DTtaFkmSkM"
+              src="https://www.youtube.com/embed/_DTtaFkmSkM?rel=0&modestbranding=1"
               title="Introduction Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
